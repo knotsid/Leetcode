@@ -8,7 +8,7 @@ public:
         int rowIndex = 0;
         int colIndex = col-1;
         
-        while(rowIndex < row && colIndex >=0){
+        while(rowIndex < row && colIndex >= 0){
             int ele = matrix[rowIndex][colIndex];
             
             if(ele==target){
