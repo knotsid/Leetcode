@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        //map approach
-        map<int,int> mpp;
+        //hashmap approach
+        unordered_map<int,int> mpp;
         for(auto i:nums){
             mpp[i]++;
         }
