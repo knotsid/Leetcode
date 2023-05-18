@@ -1,16 +1,19 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        //sort the vector
-        sort(nums.begin(), nums.end());
-        //traversing the vector
-        for(int i = 0; i < nums.size() - 1; i++){
-            //if i+1th element is equal to ith element then return
-            if(nums[i] == nums[i+1]){
-                return nums[i];
+        //vector to store number of occurrence of ele in nums
+        vector<int> count(nums.size(),0);
+        //storing occurrances of ele of nums in count
+        for(int i = 0; i < nums.size(); i++){
+            count[nums[i]]++;
+        }
+        for(int i = 0; i < nums.size(); i++){
+            //if any element occurs more than once its index is returned 
+            //bcoz index represent number itself
+            if(count[i]>1){
+                return i;
             }
         }
-        //return null because function needed a return int
         return {};
     }
 };
