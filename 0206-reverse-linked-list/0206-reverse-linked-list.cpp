@@ -8,23 +8,48 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
+private:
+    void solve(ListNode* &head, ListNode* curr, ListNode* prev){
+        if(curr == NULL){
+            head = prev;
+            return;
+        }
+        ListNode* forward = curr -> next;
+        solve(head, forward, curr);
+        curr->next = prev;
+
+    }
+
 public:
     ListNode* reverseList(ListNode* head) {
 
-        if(head == NULL || head->next ==NULL){
-            return head;
-        }
         ListNode *prev=NULL;
         ListNode *curr=head;
-        ListNode *forward = NULL;
-
-        while(curr!=NULL){
-            forward = curr -> next;
-            curr -> next = prev;
-            prev = curr;
-            curr = forward;
-        }
-        return prev;
+        solve(head, curr, prev);
+        return head;
     }
 };
+
+//ITERATIVE SOLUTION
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+
+//         if(head == NULL || head->next ==NULL){
+//             return head;
+//         }
+//         ListNode *prev=NULL;
+//         ListNode *curr=head;
+//         ListNode *forward = NULL;
+
+//         while(curr!=NULL){
+//             forward = curr -> next;
+//             curr -> next = prev;
+//             prev = curr;
+//             curr = forward;
+//         }
+//         return prev;
+//     }
+// };
