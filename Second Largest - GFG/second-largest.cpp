@@ -17,8 +17,8 @@ public:
 	            slargest=largest;
 	            largest = arr[i];
 	        }
-	        else if(arr[i]<largest){
-	            slargest = slargest > arr[i] ? slargest : arr[i];
+	        else if(arr[i]<largest && slargest < arr[i]){
+	            slargest = arr[i];
 	        }
 	    }
 	    return slargest;
