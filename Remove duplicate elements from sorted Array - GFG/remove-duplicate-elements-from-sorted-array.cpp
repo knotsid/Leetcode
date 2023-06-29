@@ -10,18 +10,34 @@ using namespace std;
 
 class Solution{
 public:
+    //      2 POINTER APPROACH
+    
+    // int remove_duplicate(int arr[],int n){
+    //     // code here
+    //     int currIndex = 0;
+    //     int i = 0;
+    //     while(i<n){
+    //         if(arr[currIndex] != arr[i]){
+    //             currIndex++;
+    //             arr[currIndex] = arr[i];
+    //         }
+    //         i++;
+    //     }
+    //     return currIndex+1;
+    // }
+    
     int remove_duplicate(int arr[],int n){
         // code here
-        int currIndex = 0;
-        int i = 0;
-        while(i<n){
-            if(arr[currIndex] != arr[i]){
-                currIndex++;
-                arr[currIndex] = arr[i];
-            }
-            i++;
+        set<int> s;
+        int index = 0;
+        for(int i=0;i<n;i++){
+            s.insert(arr[i]);
         }
-        return currIndex+1;
+        for(auto itr : s){
+            arr[index] = itr;
+            index++;
+        }
+        return index;
     }
 };
 
