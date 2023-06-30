@@ -5,36 +5,37 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 	public:
-	void leftRotate(int arr[], int d, int n) 
-	{
-	    d=d%n;
-	    reverse(arr, arr + d);
-	    reverse(arr + d, arr + n);
-	    reverse(arr, arr + n);
-	}
+// 	        Optimised
+// 	void leftRotate(int arr[], int d, int n) 
+// 	{
+// 	    d=d%n;
+// 	    reverse(arr, arr + d);
+// 	    reverse(arr + d, arr + n);
+// 	    reverse(arr, arr + n);
+// 	}
 	
 // 	        BRUTE FORCE
-// 	void leftRotate(int arr[], int d, int n) 
-// 	{ 
-// 	    d=d%n;
-// 	   // array to store starting digits upto k
-// 	   int temp[d];
+	void leftRotate(int arr[], int d, int n) 
+	{ 
+	    d=d%n;
+	   // array to store starting digits upto k
+	   int temp[d];
 	   
-// 	   // adding k elements to temp array
-// 	   for(int i=0;i<d;i++){
-// 	       temp[i] = arr[i];
-// 	   }
+	   // adding k elements to temp array
+	   for(int i=0;i<d;i++){
+	       temp[i] = arr[i];
+	   }
 	   
-// 	   // moving elements after k to starting
-// 	   for(int i=d;i<n;i++){
-// 	       arr[i-d] = arr[i];
-// 	   }
+	   // moving elements after k to starting
+	   for(int i=d;i<n;i++){
+	       arr[i-d] = arr[i];
+	   }
 	   
-// 	   // adding temp values to original array
-// 	   for(int i=n-d;i<n;i++){
-// 	       arr[i] = temp[i-(n-d)];
-// 	   }
-// 	} 
+	   // adding temp values to original array
+	   for(int i=n-d;i<n;i++){
+	       arr[i] = temp[i-(n-d)];
+	   }
+	} 
 
 };
 
