@@ -1,20 +1,27 @@
 class Solution {
 public:
-    void moveZeroes(vector<int>& nums) {
-        int i=0;
-        //for the last non zero position
-        for(int j=0;j<nums.size();j++){
-            if(nums[j]!=0){
-                //ignoring zero and findin non zero copy at i
-                nums[i++] = nums[j];
-            }
-        }
-        //since i is pointing at last non zero in nums
-        //and we have copied (not swapped) the non zero at consecutive place
-        //now we can fill the next indices from i with 0
-        for(int j=i;j<nums.size();j++){
-            nums[j]=0;
-        }
-        
+    void moveZeroes(vector<int>& arr) {
+        int n = arr.size();
+        // finding first 0 in array
+	    int j=-1;
+	    for(int i=0;i<n;i++){
+	        if(arr[i]==0){
+	            j=i;
+	            break;
+	        }
+	    }
+	    
+	    // edge case : if no zero in array
+	    if(j==-1){
+	        return ;
+	    }
+	    
+	    // swapping of non zero and zero
+	    for(int i=j+1;i<n;i++){
+	        if(arr[i]!=0){
+	            swap(arr[i],arr[j]);
+	            j++;
+	        }
+	    }
     }
 };
