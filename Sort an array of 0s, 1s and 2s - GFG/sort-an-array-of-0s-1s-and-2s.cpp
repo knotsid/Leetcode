@@ -8,23 +8,23 @@ using namespace std;
 class Solution
 {
     public:
-    void sort012(int a[], int n)
+    void sort012(int arr[], int n)
     {
-        int start = 0;
-        int end = n-1;
+        int low = 0;
         int mid = 0;
-        while(mid<=end){
-            if(a[mid]==0){
-                swap(a[start],a[mid]);
-                start++;
+        int high = n-1;
+        while(mid<=high){
+            if(arr[mid]==0){
+                swap(arr[low],arr[mid]);
+                low++;
                 mid++;
             }
-            else if(a[mid]==1){
+            else if(arr[mid]==1){
                 mid++;
             }
             else{
-                swap(a[mid],a[end]);
-                end--;
+                swap(arr[mid],arr[high]);
+                high--;
             }
         }
     }
