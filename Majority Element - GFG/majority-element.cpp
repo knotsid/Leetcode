@@ -10,26 +10,29 @@ using namespace std;
 
 class Solution{
   public:
-     // Function to find majority element in the array
-    // a: input array
-    // size: size of input array
     int majorityElement(int a[], int size)
     {
-        int res,max=0;
-        unordered_map<int,int> mpp;
+        int count = 0;
+        int ele;
         for(int i=0;i<size;i++){
-            mpp[a[i]]++;
-        }
-        for(auto itr : mpp){
-            if(itr.second > max){
-                max=itr.second;
-                res=itr.first;
+            if(count ==0){
+                count=1;
+                ele = a[i];
+            }
+            else if(ele == a[i]){
+                count ++;
+            }
+            else{
+                count --;
             }
         }
-        if(max>size/2){
-            return res;
+        int cnt=0;
+        for(int i=0;i<size;i++){
+            if(a[i]==ele){
+                cnt++;
+            }
         }
-        return -1;
+        return (cnt>size/2) ? ele : -1;
     }
 };
 
