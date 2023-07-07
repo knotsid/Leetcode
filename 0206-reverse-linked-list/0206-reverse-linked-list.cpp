@@ -9,6 +9,7 @@
  * };
  */
 
+//RECURSIVE APPROACH
 class Solution {
 private:
     void solve(ListNode* &head, ListNode* curr, ListNode* prev){
@@ -32,7 +33,7 @@ public:
     }
 };
 
-//ITERATIVE SOLUTION
+//ITERATIVE APPROACH
 // class Solution {
 // public:
 //     ListNode* reverseList(ListNode* head) {
