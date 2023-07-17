@@ -13,14 +13,12 @@ using namespace std;
 class Solution{
   public:
     int missingNumber(vector<int>& array, int n) {
+        int XOR=0;
         // Your code goes here
-        int res=0;
-        for(int x:array)
-            res=res^x;
-        for(int i=1;i<=n;i++){
-            res = res ^ i;
+        for(int i=1;i<n;i++){
+            XOR = XOR ^ array[i-1] ^ i;
         }
-        return res;
+        return XOR ^ n;
     }
 };
 
