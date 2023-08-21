@@ -17,6 +17,8 @@ public:
         }
         int left = height(node->left, res);
         int right = height(node->right, res);
+        //not using here, just using the values from height to track max 
+        //left + right height at every node
         res = max(res, left+right);
         return 1 + max(left, right);
         
