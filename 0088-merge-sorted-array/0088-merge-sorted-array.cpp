@@ -10,6 +10,7 @@ public:
                 nums1[k--]=nums2[j--];
             }
         }
+        // only loop for j bcoz num1 ke element pehle se hi array me hai and agar khatam ho gye merger karte time mtlb bs j ke liye check karna hai
         while(j>=0){
             nums1[k--]=nums2[j--];
         }
