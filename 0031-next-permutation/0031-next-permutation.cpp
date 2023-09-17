@@ -1,20 +1,32 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        int n=nums.size();
-        int pivot=-1;
+        int breakpoint=-1;
+        int n = nums.size();
+
+        // finding breakpoint
         for(int i=n-2;i>=0;i--){
             if(nums[i]<nums[i+1]){
-                pivot = i;
+                breakpoint = i;
                 break;
             }
         }
-        for(int i=n-1;i>pivot && pivot != -1;i--){
-            if(nums[i]>nums[pivot]){
-                swap(nums[i],nums[pivot]);
+
+        //if breakpoint doesnt exist meaning largest ele is given
+        //reverse and make it smalles and return
+        if(breakpoint==-1){
+            reverse(nums.begin(),nums.end());
+            return ;
+        }
+
+        // finding just bigger ele and swapping with breakpoint
+        for(int i=n-1;i>=0;i--){
+            if(nums[i]>nums[breakpoint]){
+                swap(nums[i],nums[breakpoint]);
                 break;
             }
         }
-        reverse(nums.begin() + pivot + 1, nums.end());
+        reverse(nums.begin()+breakpoint+1,nums.end());
+        return ;
     }
 };
