@@ -1,48 +1,47 @@
 class Solution {
 public:
-
-    int first_index(vector<int>& nums, int target) {
-    int start=0, end = nums.size() -1, ans=-1;
-    int mid= (start+end)/2;
-    while(start<=end){
-        if(nums[mid] == target){
-            ans=mid;
-            end=mid-1;
+    int first_occ(vector<int>nums, int target){
+        int n=nums.size();
+        int st=0, end=n-1;
+        int res=-1;
+        while(st<=end){
+            int mid = st+(end-st)/2;
+            if(nums[mid]==target){
+                res=mid;
+                end=mid-1;
+            }
+            else if(nums[mid]<target){
+                st=mid+1;
+            }
+            else{
+                end =mid-1;
+            }
         }
-        else if(nums[mid]<target){
-            start = mid+1;
-        }
-        else if(nums[mid]>target){
-            end = mid-1;
-        }
-        mid= (start+end)/2;
+        return res;
     }
-    return ans;
-}
-
-    int last_index(vector<int>& nums, int target) {
-    int start=0, end = nums.size() -1, mid, ans=-1;
-    mid= (start+end)/2;
-    while(start<=end){
-        if(nums[mid] == target){
-            ans=mid;
-            start=mid+1;
+    int last_occ(vector<int>nums, int target){
+        int n=nums.size();
+        int st=0, end=n-1;
+        int res=-1;
+        while(st<=end){
+            int mid = st+(end-st)/2;
+            if(nums[mid]==target){
+                res=mid;
+                st=mid+1;
+            }
+            else if(nums[mid]<target){
+                st=mid+1;
+            }
+            else{
+                end =mid-1;
+            }
         }
-        else if(nums[mid]<target){
-            start = mid+1;
-        }
-        else if(nums[mid]>target){
-            end = mid-1;
-        }
-        mid= (start+end)/2;
+        return res;
     }
-    return ans;
-}
-
     vector<int> searchRange(vector<int>& nums, int target) {
         vector<int> v;
-        v.push_back(first_index(nums, target));
-        v.push_back(last_index(nums, target));
+        v.push_back(first_occ(nums, target));
+        v.push_back(last_occ(nums, target));
         return v;
     }
 };
