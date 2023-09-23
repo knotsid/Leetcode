@@ -11,41 +11,13 @@
  */
 class Solution {
 public:
-    // ---------------------RECURSIVE------------------------
-
-    // void solve(TreeNode* root, vector<int> &res){
-    //     if(root == NULL){
-    //         return;
-    //     }
-    //     res.push_back(root->val);
-    //     solve(root->left, res);
-    //     solve(root->right, res);
-    // }
-
-    // ---------------------ITERATIVE------------------------
-
     void solve(TreeNode* root, vector<int> &res){
-
-        if(root == NULL){
-            return;
-        }
-
-        stack<TreeNode*>st;
-        st.push(root);
-        while(!st.empty()){
-            root = st.top();
-            st.pop();
+        if(root){
             res.push_back(root->val);
-            if(root->right != NULL){
-                st.push(root->right);
-            }
-            if(root->left != NULL){
-                st.push(root->left);
-            }
+            solve(root->left, res);
+            solve(root->right, res);
         }
-        return ;
     }
-
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int>res;
         solve(root, res);
