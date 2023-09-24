@@ -14,8 +14,11 @@ public:
         ListNode *prev=NULL;
         if(head==NULL || head->next==NULL)
             return head;
+        // bringing reversed list except head
         ListNode *revll=reverseList(head->next);
+        // making last node of reversed list to point to head
         head->next->next=head;
+        // making that head point to null bcoz now it is last ele of reversed LL
         head->next=NULL;
         return revll;
     }
