@@ -11,22 +11,16 @@
  */
 class Solution {
 public:
-    int height(TreeNode* node, int &res){
-        if(node == NULL){
-            return 0;
-        }
-        int left = height(node->left, res);
-        int right = height(node->right, res);
-        //not using here, just using the values from height to track max 
-        //left + right height at every node
-        res = max(res, left+right);
-        return 1 + max(left, right);
-        
+    int height(TreeNode *node, int &diameter){
+        if(!node) return 0;
+        int lh = height(node->left, diameter);
+        int rh = height(node->right, diameter);
+        diameter = max(diameter,lh+rh);
+        return 1+max(lh,rh);
     }
-
     int diameterOfBinaryTree(TreeNode* root) {
-        int res = 0;
-        height(root, res);
-        return res;
+        int dia=0;
+        height(root, dia);
+        return dia;
     }
 };
