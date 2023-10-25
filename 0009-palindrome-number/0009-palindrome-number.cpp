@@ -1,17 +1,17 @@
 class Solution {
 public:
-    int isPalindrome(int x) {
-        int ans=0,copy=x;
+    bool isPalindrome(int x) {
         if(x<0) return false;
-        while(x){
-            int rem=x%10;
-            if((ans>INT_MAX/10) || (ans<INT_MIN/10)){
-                return 0;
-            }
-            ans=ans*10+rem;
-            x=x/10;
+        if(x==0) return true;
+
+        int ans = 0, num=x;
+        while(num!=0){
+            int rem=num%10;
+            num/=10;
+            if(ans>INT_MAX/10) return false;
+            ans =ans * 10 + rem;
         }
-        if(ans==copy) return true;
-        else return false;
+
+        return x==ans;
     }
 };
