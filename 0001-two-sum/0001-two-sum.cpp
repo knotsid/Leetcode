@@ -1,13 +1,16 @@
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& arr, int target) {
-        unordered_map<int,int>mpp;
-        for(int i=0;i<arr.size();i++){
-            if(mpp.find(target-arr[i])==mpp.end()){
-                mpp[arr[i]]=i;
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int>mpp;  //storing ele ->index
+
+        for(int i=0;i<nums.size();i++){
+            // pair not available in map, so add curr to map
+            if(mpp.find(target - nums[i])==mpp.end()){
+                mpp[nums[i]]=i;
             }
             else{
-                return {mpp[target-arr[i]], i};
+                // pair available in map
+                return {mpp[target-nums[i]],i};
             }
         }
         return {-1,-1};
