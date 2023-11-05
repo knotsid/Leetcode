@@ -1,6 +1,7 @@
 class Solution {
 public:
     int getWinner(vector<int>& arr, int k) {
+        std::ios::sync_with_stdio(false);
         int curr=arr[0];
         int wins = 0;
         int n = arr.size();
