@@ -10,6 +10,6 @@ public:
                 occ=0;
             maxi=max(maxi,occ+1);
         }
-        return maxi==INT_MIN?s.size():maxi;
+        return maxi;
     }
 };
