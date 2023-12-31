@@ -6,10 +6,8 @@ public:
         for(int i=0;i<s.size()-1;i++){
             if(s[i] == s[i+1])
                 occ++;
-            
-            else{
+            else
                 occ=0;
-            }
             maxi=max(maxi,occ+1);
         }
         return maxi==INT_MIN?s.size():maxi;
