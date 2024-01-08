@@ -1,28 +1,16 @@
 class Solution {
 public:
-    string longestCommonPrefix(vector<string>& strs) {
-
-        // to get longest string at end of vector
-        sort(strs.begin(),strs.end());
-
-        // storing smallest length string
-        string s1=strs[0];
-
-        //storing longest length string
-        string s2=strs[strs.size()-1];
-
-        // iterator to traverse and check characters
-        int index=0;
-
-        // comparing characters btw smallest and longest string
-        while(index<s1.size()&&index<s2.size()){
-            if(s1[index]==s2[index]){
-                index++;
+    string longestCommonPrefix(vector<string>& v) {
+        string ans="";
+        sort(v.begin(),v.end());
+        int n = v.size();
+        string first = v[0], last = v[n-1];
+        for(int i=0; i<min(first.size(),last.size()); i++){
+            if(first[i] != last[i]){
+                return ans;
             }
-            else{
-                break;
-            }
+            ans+=first[i];
         }
-        return s1.substr(0,index);
+        return ans;
     }
 };
